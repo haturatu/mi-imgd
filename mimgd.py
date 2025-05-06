@@ -34,6 +34,25 @@ def scrape_misskey_images(user_urls, output_dir="misskey_images"):
             print(f"\nユーザー: {username} の処理を開始します (ディレクトリ: {user_dir})")
 
             page.goto(user_url)
+            page.wait_for_load_state("networkidle")
+
+            try:
+                note_button = page.query_selector('button._button:has-text("ノート")')
+                if note_button:
+                    note_button.click()
+                    page.wait_for_timeout(2000)
+                else:
+                    print("警告: 正常に解析できませんでした。不要な画像をクロールする場合があります。")
+
+                file_button = page.query_selector('button._button:has-text("ファイル付き")')
+                if file_button:
+                    print("「ファイル付き」ボタンをクリックします...")
+                    file_button.click()
+                    page.wait_for_timeout(2000)  # クリック後の表示を待つ
+                else:
+                    print("警告: 正常に解析できませんでした。不要な画像をクロールする場合があります。")
+            except Exception as e:
+                print(f"解析中にエラーが発生しました: {str(e)}")
 
             no_new_images_count = 0
             max_no_new_attempts = 3  # 新規画像がない場合のリトライ回数
@@ -191,3 +210,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
