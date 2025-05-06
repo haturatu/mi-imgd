@@ -42,8 +42,7 @@ def scrape_misskey_images(user_urls, output_dir="misskey_images"):
                 print(f"\n新規画像を取得中... (試行 {no_new_images_count + 1}/{max_no_new_attempts})")
 
                 last_height = page.evaluate("document.body.scrollHeight")
-                page.mouse.wheel(0, 10000)
-                page.mouse.wheel(0, 10000)
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 page.wait_for_timeout(3000)
 
                 new_height = page.evaluate("document.body.scrollHeight")
