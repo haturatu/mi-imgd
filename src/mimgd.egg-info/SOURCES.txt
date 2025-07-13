@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/mimgd/__init__.py
+src/mimgd/__main__.py
+src/mimgd.egg-info/PKG-INFO
+src/mimgd.egg-info/SOURCES.txt
+src/mimgd.egg-info/dependency_links.txt
+src/mimgd.egg-info/entry_points.txt
+src/mimgd.egg-info/requires.txt
+src/mimgd.egg-info/top_level.txt

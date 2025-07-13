@@ -1,3 +1,13 @@
+Metadata-Version: 2.4
+Name: mimgd
+Version: 0.1.0
+Summary: Misskey image downloader
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: playwright
+Requires-Dist: aiohttp
+
 # mi-imgd
 ```
            _       _                     _ 
@@ -9,14 +19,14 @@
 ```
 ## install
 ```bash
-pip install .
+pip install -r requirements.txt
+playwright install
 ```
 
 ## Usage
 ```bash
-$ mimgd -h
-usage: mimgd [-h] --links LINKS [LINKS ...] [--output-dir OUTPUT_DIR]
-             [--processes PROCESSES]
+$ python3 ./mimgd.py -h
+usage: mimgd.py [-h] --links LINKS [LINKS ...] [--output-dir OUTPUT_DIR]
 
 mi-imgd Misskey画像クローラー
 
@@ -26,8 +36,5 @@ options:
                         クロールするMisskeyユーザーページのURL (複数指定可能)
   --output-dir, -o OUTPUT_DIR
                         画像を保存する出力ディレクトリ (デフォルト: misskey_images)
-  --processes, -p PROCESSES
-                        同時に実行するプロセス数 (デフォルト: CPU論理コア数と対象URL数のうち小さい方)
-
 ```
 
